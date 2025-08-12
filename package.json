@@ -1,0 +1,50 @@
+{
+  "name": "aroopa-apps",
+  "version": "1.0.0",
+  "description": "Aroopa Apps Desktop Application",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "npx electronmon . --trace-warnings .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "electron-builder"
+  },
+  "repository": "",
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
+  },
+  "build": {
+    "appId": "com.aroopaapps.desktop.apps",
+    "productName": "Aroopa Apps",
+    "files": [
+      "**/*"
+    ],
+    "directories": {
+      "buildResources": "src/assets"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "src/assets/aroopaapps_icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "src/assets/aroopaapps_icon.icns"
+    },
+    "linux": {
+      "icon": "src/assets/aroopaapps_icon.png"
+    }
+  },
+  "keywords": [],
+  "author": "Aroopa",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@electron/packager": "^18.4.0",
+    "electron": "^37.2.4",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "electron-updater": "^6.6.2"
+  }
+}
