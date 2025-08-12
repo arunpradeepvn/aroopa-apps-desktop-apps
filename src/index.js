@@ -22,13 +22,13 @@ function createWindow() {
       nodeIntegration: true,
       contextIsolation: true,
       //   webviewTag: true,
-      preload: path.join(__dirname, "src/preload.js"),
+      preload: path.join(__dirname, "preload.js"),
     },
   });
 
   // win.webContents.openDevTools();
 
-  win.loadURL("https://aroopa.aroopaapps.com");
+  win.loadURL("https://app.molwayecosystem.com/");
 }
 
 app.whenReady().then(() => {
