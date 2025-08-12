@@ -1,6 +1,6 @@
 {
   "name": "aroopa-apps",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Aroopa Apps Desktop Application",
   "main": "src/index.js",
   "scripts": {
