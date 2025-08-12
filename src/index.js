@@ -1,15 +1,18 @@
 const {
   app,
   BrowserWindow,
-  session,
-  ipcMain,
-  nativeTheme,
 } = require("electron");
 const path = require("path");
-const { autoUpdater, AppUpdater } = require("electron-updater")
+const { dialog } = require("electron");
+const log = require("electron-log");
+const { autoUpdater } = require("electron-updater")
 
 autoUpdater.autoDownload = false;
 autoUpdater.autoInstallOnAppQuit = true;
+
+autoUpdater.logger = log;
+autoUpdater.logger.transports.file.level = "info";
+log.info("App is starting...");
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -17,13 +20,11 @@ function createWindow() {
     height: 800,
     frame: true,
     icon: path.join(__dirname, "assets", "aroopaapps_icon.icns"),
-    // autoHideMenuBar: true,
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: false,
       contextIsolation: true,
-      //   webviewTag: true,
       preload: path.join(__dirname, "preload.js"),
-    },
+    }
   });
 
   // win.webContents.openDevTools();
@@ -58,8 +59,13 @@ app.on("window-all-closed", () => {
 });
 
 /*New Update Available*/
-autoUpdater.on("update-available", (info) => {
+autoUpdater.on("update-available", () => {
   console.log("UPDATE AVAILABLE");
+  dialog.showMessageBox({
+    type: "info",
+    title: "Update available",
+    message: "A new version is available. Downloading now...",
+  });
   let pth = autoUpdater.downloadUpdate();
   console.log("UPDATE DOWNLOADED downloadUpdate FN");
 });
@@ -69,8 +75,15 @@ autoUpdater.on("update-not-available", (info) => {
 });
 
 /*Download Completion Message*/
-autoUpdater.on("update-downloaded", (info) => {
-  console.log("UPDATE DOWNLOADED");
+autoUpdater.on("update-downloaded", () => {
+  dialog.showMessageBox({
+    type: "info",
+    title: "Update Ready",
+    message: "Install now?",
+    buttons: ["Yes", "Later"]
+  }).then(result => {
+    if (result.response === 0) autoUpdater.quitAndInstall();
+  });
 });
 
 autoUpdater.on("error", (info) => {
