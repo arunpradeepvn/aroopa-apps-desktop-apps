@@ -29,7 +29,7 @@ function createWindow() {
 
   // win.webContents.openDevTools();
 
-  win.loadURL("https://app.molwayecosystem.com");
+  win.loadURL("https://aroopa.aroopaapps.com");
 }
 
 app.whenReady().then(() => {
