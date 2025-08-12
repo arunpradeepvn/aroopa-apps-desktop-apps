@@ -59,15 +59,20 @@ app.on("window-all-closed", () => {
 
 /*New Update Available*/
 autoUpdater.on("update-available", (info) => {
+  console.log("UPDATE AVAILABLE");
   let pth = autoUpdater.downloadUpdate();
+  console.log("UPDATE DOWNLOADED downloadUpdate FN");
 });
 
 autoUpdater.on("update-not-available", (info) => {
+  console.log("UPDATE NOT AVAILABLE");
 });
 
 /*Download Completion Message*/
 autoUpdater.on("update-downloaded", (info) => {
+  console.log("UPDATE DOWNLOADED");
 });
 
 autoUpdater.on("error", (info) => {
+  console.log("ERROR", info)
 });
