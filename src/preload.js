@@ -1,8 +1,8 @@
 const { contextBridge } = require("electron");
-const os = require("os");
+// const os = require("os");
 
 contextBridge.exposeInIsolatedWorld("electron", {
-  homeDir: () => os.homedir(),
+  // homeDir: () => os.homedir(),
 });
 
 window.addEventListener("DOMContentLoaded", () => {
