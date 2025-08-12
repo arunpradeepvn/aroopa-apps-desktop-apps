@@ -59,18 +59,29 @@ app.on("window-all-closed", () => {
 });
 
 /*New Update Available*/
-autoUpdater.on("update-available", () => {
+autoUpdater.on("update-available", async () => {
   console.log("UPDATE AVAILABLE");
-  dialog.showMessageBox({
+  await dialog.showMessageBox({
     type: "info",
     title: "Update available",
     message: "A new version is available. Downloading now...",
   });
-  let pth = autoUpdater.downloadUpdate();
-  console.log("UPDATE DOWNLOADED downloadUpdate FN");
+
+  try {
+    await autoUpdater.downloadUpdate();
+    console.log("UPDATE DOWNLOADED successfully");
+  } catch (err) {
+    console.error("Error downloading update:", err);
+  }
 });
 
-autoUpdater.on("update-not-available", (info) => {
+
+autoUpdater.on("update-not-available", () => {
+  dialog.showMessageBox({
+    type: "info",
+    title: "No update available",
+    message: "You are using the latest version.",
+  });
   console.log("UPDATE NOT AVAILABLE");
 });
 
@@ -88,4 +99,10 @@ autoUpdater.on("update-downloaded", () => {
 
 autoUpdater.on("error", (info) => {
   console.log("ERROR", info)
+
+  dialog.showMessageBox({
+    type: "info",
+    title: "Error updating app",
+    message: info,
+  });
 });
