@@ -61,12 +61,6 @@ app.on("window-all-closed", () => {
 /*New Update Available*/
 autoUpdater.on("update-available", async () => {
   console.log("UPDATE AVAILABLE");
-  await dialog.showMessageBox({
-    type: "info",
-    title: "Update available",
-    message: "A new version is available. Downloading now...",
-  });
-
   try {
     await autoUpdater.downloadUpdate();
     console.log("UPDATE DOWNLOADED successfully");
@@ -77,11 +71,6 @@ autoUpdater.on("update-available", async () => {
 
 
 autoUpdater.on("update-not-available", () => {
-  dialog.showMessageBox({
-    type: "info",
-    title: "No update available",
-    message: "You are using the latest version.",
-  });
   console.log("UPDATE NOT AVAILABLE");
 });
 
@@ -99,10 +88,4 @@ autoUpdater.on("update-downloaded", () => {
 
 autoUpdater.on("error", (info) => {
   console.log("ERROR", info)
-
-  dialog.showMessageBox({
-    type: "info",
-    title: "Error updating app",
-    message: info,
-  });
 });
