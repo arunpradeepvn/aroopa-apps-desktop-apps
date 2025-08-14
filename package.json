@@ -11,10 +11,10 @@
     "beta-build": "electron-builder --publish=always"
   },
   "repository": "https://github.com/arunpradeepvn/aroopa-apps-desktop-apps",
-  "publish": {
-    "provider": "github",
-    "releaseType": "release"
-  },
+  "keywords": [],
+  "author": "Aroopa",
+  "license": "ISC",
+  "type": "commonjs",
   "build": {
     "appId": "com.aroopaapps.desktop.apps",
     "productName": "Aroopa Apps",
@@ -24,26 +24,34 @@
     "directories": {
       "buildResources": "src/assets"
     },
+    "publish": {
+      "provider": "github",
+      "releaseType": "release"
+    },
     "win": {
       "target": "nsis",
       "icon": "src/assets/aroopaapps_icon.ico"
     },
     "mac": {
       "target": "dmg",
+      "category": "public.app-category.utilities",
+      "hardenedRuntime": true,
+      "entitlements": "entitlements.mac.plist",
+      "entitlementsInherit": "entitlements.mac.plist",
+      "gatekeeperAssess": false,
+      "identity": "Developer ID Application: Arunpradeep Nagarajan (J254VTF3G4)",
       "icon": "src/assets/aroopaapps_icon.icns"
     },
     "linux": {
       "icon": "src/assets/aroopaapps_icon.png"
-    }
+    },
+    "afterSign": "build/notarize.js"
   },
-  "keywords": [],
-  "author": "Aroopa",
-  "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
     "@electron/packager": "^18.4.0",
     "electron": "^37.2.4",
-    "electron-builder": "^26.0.12"
+    "electron-builder": "^26.0.12",
+    "electron-notarize": "^1.2.2"
   },
   "dependencies": {
     "electron-log": "^5.4.2",
