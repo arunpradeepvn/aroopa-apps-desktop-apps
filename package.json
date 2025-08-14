@@ -44,7 +44,7 @@
       "entitlements": "entitlements.mac.plist",
       "entitlementsInherit": "entitlements.mac.plist",
       "gatekeeperAssess": false,
-      "identity": "Developer ID Application: Arunpradeep Nagarajan (J254VTF3G4)",
+      "identity": "arunpradeep.nagarajan@aroopatech.com (LFAQR8QQ95)",
       "icon": "src/assets/aroopaapps_icon.icns"
     },
     "linux": {
