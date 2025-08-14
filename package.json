@@ -7,8 +7,8 @@
     "start": "electron .",
     "dev": "npx electronmon . --trace-warnings .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dist": "electron-builder --publish=always",
-    "beta-dist": "electron-builder --publish=always"
+    "build": "electron-builder --publish=always",
+    "beta-build": "electron-builder --publish=always"
   },
   "repository": "https://github.com/arunpradeepvn/aroopa-apps-desktop-apps",
   "publish": {
