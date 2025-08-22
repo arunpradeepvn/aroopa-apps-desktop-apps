@@ -1,6 +1,6 @@
 {
   "name": "aroopa-apps",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Aroopa Apps Desktop Application",
   "main": "src/index.js",
   "scripts": {
@@ -36,15 +36,17 @@
       "target": [
         {
           "target": "dmg",
-          "arch": ["universal"]
+          "arch": [
+            "universal"
+          ]
         }
       ],
-      "category": "public.app-category.utilities",
+      "category": "public.app-category.productivity",
       "hardenedRuntime": true,
       "entitlements": "entitlements.mac.plist",
       "entitlementsInherit": "entitlements.mac.plist",
       "gatekeeperAssess": false,
-      "identity": "arunpradeep.nagarajan@aroopatech.com (LFAQR8QQ95)",
+      "identity": "Aroopa Inc (J254VTF3G4)",
       "icon": "src/assets/aroopaapps_icon.icns"
     },
     "linux": {
@@ -53,10 +55,10 @@
     "afterSign": "build/notarize.js"
   },
   "devDependencies": {
+    "@electron/notarize": "^3.0.2",
     "@electron/packager": "^18.4.0",
     "electron": "^37.2.4",
-    "electron-builder": "^26.0.12",
-    "electron-notarize": "^1.2.2"
+    "electron-builder": "^26.0.12"
   },
   "dependencies": {
     "electron-log": "^5.4.2",
